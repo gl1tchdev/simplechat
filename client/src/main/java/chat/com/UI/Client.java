@@ -1,8 +1,17 @@
 package chat.com.UI;
 
 public class Client {
+
+    /**
+     * Graphical interface of chat client
+     * @see ClientGUI
+     */
     private static final ClientGUI gui = ClientGUI.getInstance();
 
+    /**
+     * @return GUI
+     * @see ClientGUI
+     */
     public static ClientGUI getGui() {
         return gui;
     }

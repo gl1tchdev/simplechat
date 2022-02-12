@@ -7,12 +7,14 @@ import java.awt.event.WindowEvent;
 
 import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
 
+/**
+ * Graphical wrapper for server
+ */
 public class ServerGUI {
     private JPanel panel1;
     private JList<String> list1;
     private JScrollPane scroll;
     private final DefaultListModel<String> listModel = new DefaultListModel<>();
-    private final JFrame frame = new JFrame("ServerGUI");
     private static ServerGUI instance = null;
 
 
@@ -21,7 +23,9 @@ public class ServerGUI {
             instance = new ServerGUI();
         return instance;
     }
-
+    /**
+     * @return Dimension, which contains width and height of screen user device
+     */
     private Dimension getSize(){
         return Toolkit. getDefaultToolkit(). getScreenSize();
     }
@@ -29,6 +33,7 @@ public class ServerGUI {
 
     public ServerGUI() {
         scroll.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
+        JFrame frame = new JFrame("ServerGUI");
         frame.setContentPane(panel1);
         list1.setModel(listModel);
         Dimension dim = getSize();
@@ -53,15 +58,6 @@ public class ServerGUI {
         frame.setVisible(true);
     }
 
-    public void showError(String text) {
-        JOptionPane.showMessageDialog(frame, text, "Error",
-                JOptionPane.ERROR_MESSAGE);
-    }
-
-
-    public void close(){
-        this.frame.dispose();
-    }
     public void addMessage(String st){
         listModel.addElement(st);
     }

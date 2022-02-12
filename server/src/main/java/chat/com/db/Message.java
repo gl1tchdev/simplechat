@@ -3,13 +3,31 @@ package chat.com.db;
 
 import chat.com.ServiceStatusWord;
 
+/**
+ * Chat message model
+ */
 public class Message{
+    /**
+     * {@value} Primary key of db. Not displayed in chat area
+     */
     private int id;
+    /**
+     * {@value} Message author
+     */
     private String nickname;
+    /**
+     * {@value} Message body
+     */
     private String text;
+    /**
+     * {@value} Date of sending this message
+     */
     private String date;
 
 
+    /**
+     * @return Ready message, which could be sent
+     */
     @Override
     public String toString() {
         for (ServiceStatusWord word: ServiceStatusWord.values()){

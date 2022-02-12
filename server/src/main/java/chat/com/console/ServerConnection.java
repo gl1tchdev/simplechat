@@ -57,12 +57,18 @@ public class ServerConnection{
         return "";
     }
 
+    /**
+     * @return Current time
+     */
     public String getTime(){
         Date time = new Date();
         SimpleDateFormat dt1 = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         return dt1.format(time);
     }
 
+    /**
+     * Gets input message from one client and send it to other
+     */
     private class MessageBroadcaster extends Thread{
         private boolean loop = true;
 
@@ -89,6 +95,11 @@ public class ServerConnection{
             }
         }
     }
+
+    /**
+     * Saves messages in correct format to db
+     * @param message Original message
+     */
     private void saveMessage(String message){
         Message msg = new Message();
         msg.setDate(getTime());
@@ -97,6 +108,9 @@ public class ServerConnection{
         Server.getDbHandler().addMessage(msg);
     }
 
+    /**
+     * @param message Send message to all clients
+     */
     private void broadcastMessage(String message){
         ConcurrentHashMap<String, ServerConnection> list = Server.getServerList();
         if (list.isEmpty()) return;
@@ -107,16 +121,27 @@ public class ServerConnection{
         System.out.println(message);
     }
 
+    /**
+     * Uses to show default message
+     * @param message Converts original message to need format
+     */
     private void broadcastChatMessage(String message){
         saveMessage(message);
         broadcastMessage("(" + getTime() + ") " + getNickname() + ": " + message);
     }
 
+    /**
+     * Uses to show event with user
+     * @param action Action is status word
+     */
     private void broadcastServiceMessage(ServiceStatusWord action){
         saveMessage(action.getValue());
         broadcastMessage("(" + getTime() + ") " + getNickname() + " " + action.getValue());
     }
 
+    /**
+     * Stops messageBroadcaster, removes current connection from serverlist, closes socket streams
+     */
     public void close(){
         try {
             messageBroadcaster.finish();

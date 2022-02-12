@@ -4,8 +4,15 @@ package chat.com.console;
 import java.util.Scanner;
 
 public class Client {
-    private static final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Uses to get input user's values
+     */
+    private static final Scanner scanner = new Scanner(System.in);
+    /**
+     * @return Scanner
+     * @see Scanner
+     */
     public static Scanner getScanner() {
         return scanner;
     }

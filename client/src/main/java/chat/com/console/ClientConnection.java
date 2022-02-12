@@ -6,13 +6,39 @@ import java.net.ConnectException;
 import java.net.Socket;
 
 
+/**
+ * Class of client connection to server
+ */
 public class ClientConnection{
+    /**
+     * {@value} Client socket
+     */
     private Socket socket;
+    /**
+     * {@value} Buffered reader of input socket stream
+     */
     private BufferedReader in;
+    /**
+     * {@value} Buffered writer of output socket stream
+     */
     private BufferedWriter out;
+    /**
+     * {@value} Field for message listener
+     * @see messageListener
+     */
     private messageListener messageListener;
+    /**
+     * {@value} Field for message sender
+     * @see messageSender
+     */
     private messageSender messageSender;
 
+
+    /**
+     * Creates socket, input and output streams
+     * @param address IP-address of server
+     * @param PORT Port of server
+     */
     public ClientConnection(String address, int PORT) {
         try {
             try {
@@ -34,9 +60,19 @@ public class ClientConnection{
         }
     }
 
+    /**
+     * Endlessly gets messages from server and sends to output stream
+     *
+     */
     private class messageListener extends Thread {
+        /**
+         * {@value} Uses to control run()
+         */
         private boolean loop = true;
 
+        /**
+         * Stops the messageListener
+         */
         public void finish() {
             this.loop = false;
         }
@@ -65,9 +101,17 @@ public class ClientConnection{
             }
         }
     }
-
+    /**
+     * Endlessly gets messages from input stream and sends to server
+     */
     private class messageSender extends Thread{
+        /**
+         * {@value} Uses to control messageSender#run()
+         */
         private boolean loop = true;
+        /**
+         * Stops the messageSender
+         */
         public void finish(){
             this.loop = false;
         }
@@ -95,6 +139,10 @@ public class ClientConnection{
         }
     }
 
+    /**
+     * Gets string from input socket stream
+     * @return message from server
+     */
     public String get(){
         try {
             return in.readLine();
@@ -106,6 +154,10 @@ public class ClientConnection{
         return null;
     }
 
+    /**
+     * Put string to output socket stream
+     * @param message message which sends to server
+     */
     public void send(String message) {
         try {
             out.write(message + "\n");
@@ -117,6 +169,9 @@ public class ClientConnection{
         }
     }
 
+    /**
+     * Closes socket, listeners, and it's streams
+     */
     public void close() {
         try {
             messageListener.finish();

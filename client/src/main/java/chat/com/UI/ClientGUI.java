@@ -9,15 +9,39 @@ import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
 
 
 public class ClientGUI {
+    /**
+     * {@value} Main panel of interface
+     */
     private JPanel panel1;
+    /**
+     * {@value} Input field for chatting
+     */
     private JTextField textField1;
+    /**
+     * {@value} Messages list
+     */
     private JList<String> list1;
+    /**
+     * {@value} Scroll pane for messages list
+     */
     private JScrollPane scroll;
+    /**
+     * {@value} List model for list messages
+     */
     private final DefaultListModel<String> listModel = new DefaultListModel<>();
+    /**
+     * {@value} Main frame
+     */
     private final JFrame frame = new JFrame("ServerGUI");
+    /**
+     * {@value} Single copy of this class
+     */
     private static ClientGUI instance = null;
 
 
+    /**
+     * @return ClientGUI instance
+     */
     public static synchronized ClientGUI getInstance(){
         if (instance == null)
             instance = new ClientGUI();
@@ -28,6 +52,10 @@ public class ClientGUI {
         return textField1;
     }
 
+
+    /**
+     * @return Dimension, which contains width and height of screen user device
+     */
     private Dimension getSize(){
         return Toolkit. getDefaultToolkit(). getScreenSize();
     }
@@ -40,6 +68,9 @@ public class ClientGUI {
         return listModel;
     }
 
+    /**
+     * Creates window and set it up
+     */
     public ClientGUI() {
         scroll.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         frame.setContentPane(panel1);

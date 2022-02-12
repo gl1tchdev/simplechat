@@ -6,11 +6,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
+/**
+ * Class created for easy and fast managing db
+ */
 public class DBHandler {
+    /**
+     * {@value} Path to connect existing db
+     */
     private static final String CON_STR = "jdbc:sqlite:" + System.getProperty("user.dir") + "\\server\\database-src\\chat.db";
 
+    /**
+     * {@value} Single copy of DBHandler
+     */
     private static DBHandler instance = null;
 
+    /**
+     *
+     * @return DBBHanler instance
+     * @throws SQLException Can throw SQLException
+     */
     public static synchronized DBHandler getInstance() throws SQLException {
         if (instance == null)
             instance = new DBHandler();
@@ -19,11 +34,19 @@ public class DBHandler {
 
     private final Connection connection;
 
+
+    /**
+     * Creates db connect
+     * @throws SQLException Can throw SQLException
+     */
     private DBHandler() throws SQLException {
         DriverManager.registerDriver(new JDBC());
         this.connection = DriverManager.getConnection(CON_STR);
     }
 
+    /**
+     * @return 10 last messages
+     */
     public List<Message> getLastMessages() {
         try (Statement statement = this.connection.createStatement()) {
             List<Message> messages = new ArrayList<>();
@@ -46,6 +69,11 @@ public class DBHandler {
             return Collections.emptyList();
         }
     }
+
+    /**
+     * Puts chat message to db
+     * @param message Message, which is written to db
+     */
     public void addMessage(Message message) {
         try (PreparedStatement statement = this.connection.prepareStatement(
                 "INSERT INTO messages(`nickname`, `text`, `date`) " +

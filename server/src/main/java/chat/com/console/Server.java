@@ -14,7 +14,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Server {
     private static final int PORT = 4004;
     private static ServerSocket server;
+    /**
+     * {@value} Contains in pair Nickname => ServerConnection
+     */
     private static ConcurrentHashMap<String, ServerConnection> serverList = new ConcurrentHashMap<>();
+    /**
+     * @see DBHandler
+     */
     private static DBHandler dbHandler;
 
     public static DBHandler getDbHandler() {
@@ -29,6 +35,9 @@ public class Server {
         Server.serverList = serverList;
     }
 
+    /**
+     * Endlessly accept new connections and puts they to serverList
+     */
     private static class connectionListener extends Thread {
         private static boolean loop = true;
 
@@ -51,10 +60,16 @@ public class Server {
     }
 
 
+    /**
+     * Shut down the server
+     */
     public static void downService(){
         serverList.forEach((nickname,conn) -> conn.close());
     }
 
+    /**
+     * @return Server ip
+     */
     public static String getOwnIp(){
         String realip = null;
         URL whatismyip = null;
