@@ -1,7 +1,7 @@
 package chat.com;
 
 public enum ServiceStatusWord {
-    JOINED("подключился"), LEFT("вышел");
+    JOINED("joined"), LEFT("left");
     private final String value;
 
     ServiceStatusWord(String value) {

@@ -18,6 +18,11 @@ public class Server {
     private static ServerSocket server;
     private static ConcurrentHashMap<String, ServerConnection> serverList = new ConcurrentHashMap<>();
     private static DBHandler dbHandler;
+    private static ServerGUI serverGUI = ServerGUI.getInstance();
+
+    public static ServerGUI getGui() {
+        return serverGUI;
+    }
 
     public static DBHandler getDbHandler() {
         return dbHandler;
@@ -84,11 +89,11 @@ public class Server {
 
     public static void main(String[] args) {
         try {
+            getGui().addMessage(getOwnIp() + ":" + PORT);
+            getGui().addMessage("Waiting for connections...");
             dbHandler = DBHandler.getInstance();
             server = new ServerSocket(PORT);
-            System.out.println(getOwnIp() + ":" + PORT);
             connectionListener connectionListener = new connectionListener();
-            System.out.println("Waiting for connections...");
             connectionListener.start();
         } catch (IOException | SQLException e) {
             connectionListener.finish();

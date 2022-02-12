@@ -1,8 +1,5 @@
 package chat.com.UI;
 
-
-import java.util.Scanner;
-
 public class Client {
     private static final ClientGUI gui = ClientGUI.getInstance();
 
@@ -11,7 +8,7 @@ public class Client {
     }
 
     public static void main(String[] args) {
-        String in = getGui().askQuestion("Enter address ip:port [by default localhost:4004]");
+        String in = getGui().askQuestion("Enter address ip:port [by default address=localhost:4004]");
         if (in == null) {
             System.exit(0);
             return;

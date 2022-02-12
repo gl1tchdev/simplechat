@@ -45,7 +45,7 @@ public class ClientGUI {
         frame.setContentPane(panel1);
         list1.setModel(listModel);
         Dimension dim = getSize();
-        frame.setTitle("Client chat");
+        frame.setTitle("Client");
         frame.setAlwaysOnTop(true);
         Dimension preferred = new Dimension();
         preferred.setSize(500, 300);
@@ -58,7 +58,7 @@ public class ClientGUI {
             @Override
             public void windowClosing(WindowEvent e)
             {
-                e.getWindow().dispose();
+                close();
                 System.exit(0);
             }
         });

@@ -19,7 +19,7 @@ public class ClientConnection{
                 socket = new Socket(address, PORT);
             }
             catch (ConnectException c) {
-                System.out.println("Сервер недоступен");
+                System.out.println("Server is unavailable");
                 System.exit(0);
             }
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -52,7 +52,7 @@ public class ClientConnection{
                     catch (NullPointerException e) {
                         finish();
                         close();
-                        System.out.println("disconnect");
+                        System.out.println("Disconnected");
                     }
                     assert message != null;
                     if (message.equals("disconnect")){
@@ -100,7 +100,7 @@ public class ClientConnection{
             return in.readLine();
         } catch (IOException e) {
             close();
-            System.out.println("Связь с сервером потеряна");
+            System.out.println("Connection lost");
             System.exit(0);
         }
         return null;
@@ -112,7 +112,7 @@ public class ClientConnection{
             out.flush();
         } catch (IOException e) {
             close();
-            System.out.println("Связь с сервером потеряна");
+            System.out.println("Connection lost");
             System.exit(0);
         }
     }

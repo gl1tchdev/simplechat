@@ -51,7 +51,6 @@ public class ServerConnection{
         try {
             return in.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
             close();
             broadcastServiceMessage(ServiceStatusWord.LEFT);
         }
@@ -105,7 +104,7 @@ public class ServerConnection{
             conn.send(message);
         }
         Server.setServerList(list);
-        System.out.println(message); //для серва
+        Server.getGui().addMessage(message);
     }
 
     private void broadcastChatMessage(String message){

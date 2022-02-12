@@ -104,7 +104,7 @@ public class ServerConnection{
             conn.send(message);
         }
         Server.setServerList(list);
-        System.out.println(message); //для серва
+        System.out.println(message);
     }
 
     private void broadcastChatMessage(String message){

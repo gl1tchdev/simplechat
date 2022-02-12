@@ -11,7 +11,6 @@ public class ClientConnection{
     private BufferedReader in;
     private BufferedWriter out;
     private messageListener messageListener;
-//    private messageSender messageSender;
 
     public ClientConnection(String address, int PORT) {
         try {
@@ -19,8 +18,9 @@ public class ClientConnection{
                 socket = new Socket(address, PORT);
             }
             catch (ConnectException c) {
-                Client.getGui().showError("Сервер недоступен");
+                Client.getGui().showError("Server is not available");
                 Client.getGui().close();
+                System.exit(0);
             }
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -56,7 +56,8 @@ public class ClientConnection{
                     catch (NullPointerException e) {
                         finish();
                         close();
-                        Client.getGui().showError("Disconnect");
+                        Client.getGui().showError("Disconnected");
+                        System.exit(0);
                     }
                     assert message != null;
                     if (message.equals("disconnect")){
@@ -75,7 +76,7 @@ public class ClientConnection{
             return in.readLine();
         } catch (IOException e) {
             close();
-            Client.getGui().showError("Связь с сервером потеряна");
+            Client.getGui().showError("Connection lost");
             Client.getGui().close();
         }
         return null;
@@ -87,7 +88,7 @@ public class ClientConnection{
             out.flush();
         } catch (IOException e) {
             close();
-            Client.getGui().showError("Связь с сервером потеряна");
+            Client.getGui().showError("Connection lost");
             Client.getGui().close();
         }
     }
