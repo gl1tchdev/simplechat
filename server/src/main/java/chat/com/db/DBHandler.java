@@ -23,7 +23,7 @@ public class DBHandler {
 
     /**
      *
-     * @return DBBHanler instance
+     * @return DBBHandler instance
      * @throws SQLException Can throw SQLException
      */
     public static synchronized DBHandler getInstance() throws SQLException {

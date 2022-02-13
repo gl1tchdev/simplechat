@@ -10,6 +10,7 @@ public class Message{
     /**
      * {@value} Primary key of db. Not displayed in chat area
      */
+    @SuppressWarnings("FieldCanBeLocal")
     private int id;
     /**
      * {@value} Message author

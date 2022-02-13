@@ -18,7 +18,7 @@ public class Server {
     private static ServerSocket server;
     private static ConcurrentHashMap<String, ServerConnection> serverList = new ConcurrentHashMap<>();
     private static DBHandler dbHandler;
-    private static ServerGUI serverGUI = ServerGUI.getInstance();
+    private static final ServerGUI serverGUI = ServerGUI.getInstance();
 
     public static ServerGUI getGui() {
         return serverGUI;
