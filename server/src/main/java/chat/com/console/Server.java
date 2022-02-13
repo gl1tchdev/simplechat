@@ -104,6 +104,7 @@ public class Server {
             System.out.println("Waiting for connections...");
             connectionListener.start();
         } catch (IOException | SQLException e) {
+            e.printStackTrace();
             connectionListener.finish();
             try {
                 server.close();
