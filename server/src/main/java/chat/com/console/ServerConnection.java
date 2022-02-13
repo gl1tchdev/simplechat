@@ -2,7 +2,9 @@ package chat.com.console;
 
 
 import chat.com.ServiceStatusWord;
+import chat.com.db.DBHandler;
 import chat.com.db.Message;
+import chat.com.db.User;
 
 import java.io.*;
 import java.net.Socket;
@@ -24,6 +26,7 @@ public class ServerConnection{
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             this.nickname = get();
+            Server.getDbHandler().addToUsers(new User(this.nickname, this.getTime()));
             messageBroadcaster = new MessageBroadcaster();
             messageBroadcaster.start();
         } catch (IOException e) {

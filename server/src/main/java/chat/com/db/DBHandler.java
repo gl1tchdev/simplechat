@@ -71,6 +71,22 @@ public class DBHandler {
     }
 
     /**
+     * Add nickname of joined user to table `users`
+     * @param user User object
+     */
+    public void addToUsers(User user){
+        try (PreparedStatement statement = this.connection.prepareStatement(
+                "INSERT OR IGNORE INTO users(`nickname`, `date`) " +
+                        "VALUES(?, ?)")) {
+            statement.setObject(1, user.getNickname());
+            statement.setObject(2, user.getRegistrationDate());
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Puts chat message to db
      * @param message Message, which is written to db
      */
