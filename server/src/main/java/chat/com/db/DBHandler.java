@@ -14,7 +14,7 @@ public class DBHandler {
     /**
      * {@value} Path to connect existing db
      */
-    private static final String CON_STR = "jdbc:sqlite:" + System.getProperty("user.dir") + "\\server\\database-src\\chat.db";
+    private static final String CON_STR = "jdbc:sqlite:chat.db";
 
     /**
      * {@value} Single copy of DBHandler

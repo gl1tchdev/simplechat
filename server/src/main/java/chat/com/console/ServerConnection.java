@@ -2,7 +2,6 @@ package chat.com.console;
 
 
 import chat.com.ServiceStatusWord;
-import chat.com.db.DBHandler;
 import chat.com.db.Message;
 import chat.com.db.User;
 
