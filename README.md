@@ -1,5 +1,5 @@
 # Description
-Simple program chat written in Java. There are two versions: console and graphic. 
+Simple program chat written in Java. There are two versions: console and graphical. 
 ____
 # Install
 ```
@@ -26,8 +26,7 @@ Client:
 java -jar out/artifacts/ui/client.jar
 ```
 ____
-# Instruction
-How to use?
+# How to use
 ## Step 1. Run the server
 ![First](https://i.imgur.com/5kyJMZL.png "UI server")
 ## Step 2. Copy address (or write it)
@@ -35,7 +34,7 @@ How to use?
 ## Step 3. Run the client and paste address
 
 Don't forget set up the firewall
-You can dont fill this field and press enter if you run server and client at same device
+You can don't fill this field and press enter if you run server and client at same device
 ![Third](https://i.imgur.com/6ZO8BgJ.png "UI client")
 Press OK
 ## Step 4. Type your nickname and press enter 
@@ -44,6 +43,6 @@ Press OK
 ![Fifth](https://i.imgur.com/LUK57qE.png "UI client")
 
 You run server and connected. To invite your friend you should send server address, and your friend should repeat 2-4 steps  
-Clients wont work withour run server.
+Clients won't work without run server.
 ## Console version
-Use it in those cases when devices cannot display a graphical interface (ssh for example)
+Use it in those cases when GUI can't be displayed  (while connecting ssh for example)
