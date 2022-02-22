@@ -33,8 +33,8 @@ ____
 ![Second](https://i.imgur.com/fwjAmhQ.png "UI server")
 ## Step 3. Run the client and paste address
 
-Don't forget set up the firewall
-You can don't fill this field and press enter if you run server and client at same device
+Don't forget open 4004 port  
+You don't need fill this field and press enter if you run server and client at same device
 ![Third](https://i.imgur.com/6ZO8BgJ.png "UI client")
 Press OK
 ## Step 4. Type your nickname and press enter 
