@@ -7,6 +7,9 @@ git clone https://github.com/gl1tchdev/simplechat.git
 cd simplechat
 ```
 ____
+# Requirements
+jre 1.8 (java 8)
+____
 # Run
 ## Console version
 Server:
@@ -31,10 +34,10 @@ ____
 ![First](https://i.imgur.com/5kyJMZL.png "UI server")
 ## Step 2. Copy address (or write it)
 ![Second](https://i.imgur.com/fwjAmhQ.png "UI server")
-## Step 3. Run the client and paste address
+## Step 3. Run the client, paste address, press enter
 
 Don't forget open 4004 port  
-You don't need fill this field and press enter if you run server and client at same device
+You don't need fill this field if you run server and client at the same device
 ![Third](https://i.imgur.com/6ZO8BgJ.png "UI client")
 Press OK
 ## Step 4. Type your nickname and press enter 
